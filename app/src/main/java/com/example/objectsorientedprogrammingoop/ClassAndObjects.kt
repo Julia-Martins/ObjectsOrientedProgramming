@@ -1,8 +1,58 @@
 package com.example.objectsorientedprogrammingoop
 
+import kotlin.math.floor
+
 data class User(val id: Long, var name: String)
 
 fun  main(){
+// region Lists
+    val stringList: List<String> = listOf("Julia", "Thais", "Lucas", "Bruce", "Barbara")
+    val mixedTypeList: List<Any> = listOf("Julia", 21, 9, "Birthday", 101.0, "Weights", "Kg")
+
+    for(value in mixedTypeList){
+        when (value) {
+        is Int -> {
+            println("Integer: '$value'")
+        }
+        is Double -> {
+            println("Double: '$value' with Floor value ${floor(value)}")
+        }
+        is String -> {
+            println("String: '$value' f length ${value.length}")
+        }
+        else -> {
+            println("Unknown Type")
+        }
+//         Alternatively
+//        if(value is Int){
+//            println("Integer: $value")
+//        }else if(value is Double){
+//            println("Double: $value with Floor value ${floor(value)}")
+//        }else if(value is String){
+//            println("String: $value f length ${value.length}")
+//        }else{
+//            println("Unknown Type")
+//        }
+        }
+    }
+    val obj1: Any = "Wolf and Seals are the best animals"
+    if(obj1 !is String){
+        println("Not a String")
+    }else{
+        println("Found a String of Length ${obj1.length}")
+    }
+
+    val str1: String = obj1 as String
+    println(str1.length)
+
+    val obj2: Any = 2172
+    val str2: String? = obj2 as? String
+    println(str2)
+
+//    val obj3: Any = 8172
+//    val str3: String? = obj3 as? String
+//    println(str3)
+// endregion
 
 //     region Function USER
 //    val user1 = User(1, "Júlia")
@@ -53,14 +103,14 @@ fun  main(){
 // endregion
 
 // region Vehicle
-    var myVehicle = Car(200.00,"HB20", "Hyundai")
-    var myVehicleElectric = ElectricCar(250.00,"S-Model", "Tesla", 81.0)
+//    var myVehicle = Car(200.00,"HB20", "Hyundai")
+//    var myVehicleElectric = ElectricCar(250.00,"S-Model", "Tesla", 81.0)
 
 //    myVehicleElectric.extendRange(200.0)
-    myVehicleElectric.drive()
-
-    myVehicle.brake()
-    myVehicleElectric.brake()
+//    myVehicleElectric.drive()
+//
+//    myVehicle.brake()
+//    myVehicleElectric.brake()
 
     // Polymorphism
 //    myVehicle.drive(200.0)
@@ -68,6 +118,16 @@ fun  main(){
 
 // endregion
 
+// region Mammals
+//    val human = Human("Júlia Brasileiro", "Brazil", 101.0, 20.0)
+//    val wolf = Wolf("Ebony", "England", 38.0, 54.88)
+//
+//    human.run()
+//    wolf.run()
+//
+//    human.breath()
+//    wolf.breath()
+// endregion
 }
 // region Class Car
 //class Car(){
@@ -131,53 +191,88 @@ fun  main(){
 // endregion
 
 // region Interface Drivable
-    interface Drivable{
-        val maxSpeed: Double
-        fun drive(): String
-        fun brake(){
-            println("The drivable is braking")
-        }
-    }
+//    interface Drivable{
+//        val maxSpeed: Double
+//        fun drive(): String
+//        fun brake(){
+//            println("The drivable is braking")
+//        }
+//    }
 // endregion
 
 // region Class Vehicle
 
 // Super Class
-open class Car(override val maxSpeed: Double, val name: String, val brand: String): Drivable{
-    open var range: Double = 0.0
-
-    fun extendRange(amount: Double){
-        if(amount > 0){
-            range += amount
-        }
-    }
+//open class Car(override val maxSpeed: Double, val name: String, val brand: String): Drivable{
+//    open var range: Double = 0.0
+//
+//    fun extendRange(amount: Double){
+//        if(amount > 0){
+//            range += amount
+//        }
+//    }
 
     // Form shortly to do a fun
 //    override fun drive(): String = "Driving the interface drive"
-    override fun drive(): String {
-        return "Driving the interface drive"
-    }
-
-    open fun drive(distance: Double){
-        println("Drove for $distance KM")
-    }
-}
+//    override fun drive(): String {
+//        return "Driving the interface drive"
+//    }
+//
+//    open fun drive(distance: Double){
+//        println("Drove for $distance KM")
+//    }
+//}
 
 // Sub Class derived of Car
-class ElectricCar(maxSpeed: Double, name: String, brand: String, batteryLife: Double)
-    : Car(maxSpeed, name, brand){
-    override var range = batteryLife * 6
+//class ElectricCar(maxSpeed: Double, name: String, brand: String, batteryLife: Double)
+//    : Car(maxSpeed, name, brand){
+//    override var range = batteryLife * 6
+//
+//    override fun drive(distance: Double){
+//        println("Drove for $distance KM on electricity")
+//    }
+//
+//    override fun drive() : String{
+//        return "Drove for $range KM on electricity"
+//    }
+//
+//    override fun brake() {
+//        super.brake()
+//    }
+//}
+// endregion
 
-    override fun drive(distance: Double){
-        println("Drove for $distance KM on electricity")
+// region Abstract Class
+    abstract class Mammal(private val name: String, private val origin: String, private val weight: Double){
+        abstract var maxSpeed: Double
+
+        abstract fun run()
+        abstract fun breath()
+
+        fun displayDetails(){
+            println("Name: $name, Origin: $origin, Weight: $weight, Max Speed: $maxSpeed")
+        }
     }
 
-    override fun drive() : String{
-        return "Drove for $range KM on electricity"
+class Human(name: String, origin: String, override var maxSpeed: Double, weight: Double): Mammal(name, origin, weight){
+    override fun run() {
+        println("Runs on two legs")
     }
 
-    override fun brake() {
-        super.brake()
+    override fun breath() {
+        println("Breath through mouth or nose")
     }
+
+}
+
+class Wolf(name: String, origin: String, override var maxSpeed: Double, weight: Double): Mammal(name, origin, weight){
+    override fun run() {
+        println("Runs on four legs")
+    }
+
+    override fun breath() {
+        println("Breath through mouth and sometimes nose")
+    }
+
 }
 // endregion
