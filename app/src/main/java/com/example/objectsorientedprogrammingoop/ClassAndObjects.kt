@@ -5,24 +5,51 @@ import kotlin.math.floor
 data class User(val id: Long, var name: String)
 
 fun  main(){
-// region Lists
-    val stringList: List<String> = listOf("Julia", "Thais", "Lucas", "Bruce", "Barbara")
-    val mixedTypeList: List<Any> = listOf("Julia", 21, 9, "Birthday", 101.0, "Weights", "Kg")
+// region Array
+//    val numbers = intArrayOf(21, 72, 81)
+//    val numbers = arrayOf(27, 79, 92)
+    val numbers = doubleArrayOf(27.1, 79.4, 92.0)
+//    println("Initial values ${numbers.contentToString()}")
+//    for(element in numbers){
+//        println("${element +7}")
+//    }
+    numbers[0] = 21.7
+    numbers[1] = 72.8
+    numbers[2] = 81.9
+//    println("Latest values ${numbers.contentToString()}")
 
-    for(value in mixedTypeList){
-        when (value) {
-        is Int -> {
-            println("Integer: '$value'")
-        }
-        is Double -> {
-            println("Double: '$value' with Floor value ${floor(value)}")
-        }
-        is String -> {
-            println("String: '$value' f length ${value.length}")
-        }
-        else -> {
-            println("Unknown Type")
-        }
+    val mix = arrayOf("Julia", "Brasileiro", 20, "2002/09/21", 20, 0.00, "Developer")
+
+//    println(mix.contentToString())
+
+    val fruits = arrayOf(fruit("Strawberry", 10.96), fruit("Sleeve", 8.90))
+    for(index in fruits.indices){
+//        println("${fruits[index].name} is in index $index")
+    }
+
+    for(fruit in fruits){
+//        println("${fruit.name}")
+    }
+
+// endregion
+// region Lists
+//    val stringList: List<String> = listOf("Julia", "Thais", "Lucas", "Bruce", "Barbara")
+//    val mixedTypeList: List<Any> = listOf("Julia", 21, 9, "Birthday", 101.0, "Weights", "Kg")
+
+//    for(value in mixedTypeList){
+//        when (value) {
+//        is Int -> {
+//            println("Integer: '$value'")
+//        }
+//        is Double -> {
+//            println("Double: '$value' with Floor value ${floor(value)}")
+//        }
+//        is String -> {
+//            println("String: '$value' f length ${value.length}")
+//        }
+//        else -> {
+//            println("Unknown Type")
+//        }
 //         Alternatively
 //        if(value is Int){
 //            println("Integer: $value")
@@ -33,21 +60,21 @@ fun  main(){
 //        }else{
 //            println("Unknown Type")
 //        }
-        }
-    }
-    val obj1: Any = "Wolf and Seals are the best animals"
-    if(obj1 !is String){
-        println("Not a String")
-    }else{
-        println("Found a String of Length ${obj1.length}")
-    }
-
-    val str1: String = obj1 as String
-    println(str1.length)
-
-    val obj2: Any = 2172
-    val str2: String? = obj2 as? String
-    println(str2)
+//        }
+//    }
+//    val obj1: Any = "Wolf and Seals are the best animals"
+//    if(obj1 !is String){
+//        println("Not a String")
+//    }else{
+//        println("Found a String of Length ${obj1.length}")
+//    }
+//
+//    val str1: String = obj1 as String
+//    println(str1.length)
+//
+//    val obj2: Any = 2172
+//    val str2: String? = obj2 as? String
+//    println(str2)
 
 //    val obj3: Any = 8172
 //    val str3: String? = obj3 as? String
@@ -129,6 +156,11 @@ fun  main(){
 //    wolf.breath()
 // endregion
 }
+
+data class fruit(val name: String, val price: Double){
+
+}
+
 // region Class Car
 //class Car(){
 //    lateinit var owner : String
@@ -243,36 +275,36 @@ fun  main(){
 // endregion
 
 // region Abstract Class
-    abstract class Mammal(private val name: String, private val origin: String, private val weight: Double){
-        abstract var maxSpeed: Double
-
-        abstract fun run()
-        abstract fun breath()
-
-        fun displayDetails(){
-            println("Name: $name, Origin: $origin, Weight: $weight, Max Speed: $maxSpeed")
-        }
-    }
-
-class Human(name: String, origin: String, override var maxSpeed: Double, weight: Double): Mammal(name, origin, weight){
-    override fun run() {
-        println("Runs on two legs")
-    }
-
-    override fun breath() {
-        println("Breath through mouth or nose")
-    }
-
-}
-
-class Wolf(name: String, origin: String, override var maxSpeed: Double, weight: Double): Mammal(name, origin, weight){
-    override fun run() {
-        println("Runs on four legs")
-    }
-
-    override fun breath() {
-        println("Breath through mouth and sometimes nose")
-    }
-
-}
+//    abstract class Mammal(private val name: String, private val origin: String, private val weight: Double){
+//        abstract var maxSpeed: Double
+//
+//        abstract fun run()
+//        abstract fun breath()
+//
+//        fun displayDetails(){
+//            println("Name: $name, Origin: $origin, Weight: $weight, Max Speed: $maxSpeed")
+//        }
+//    }
+//
+//class Human(name: String, origin: String, override var maxSpeed: Double, weight: Double): Mammal(name, origin, weight){
+//    override fun run() {
+//        println("Runs on two legs")
+//    }
+//
+//    override fun breath() {
+//        println("Breath through mouth or nose")
+//    }
+//
+//}
+//
+//class Wolf(name: String, origin: String, override var maxSpeed: Double, weight: Double): Mammal(name, origin, weight){
+//    override fun run() {
+//        println("Runs on four legs")
+//    }
+//
+//    override fun breath() {
+//        println("Breath through mouth and sometimes nose")
+//    }
+//
+//}
 // endregion
