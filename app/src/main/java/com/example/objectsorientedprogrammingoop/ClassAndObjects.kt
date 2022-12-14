@@ -5,6 +5,39 @@ import kotlin.math.floor
 data class User(val id: Long, var name: String)
 
 fun  main() {
+// region Array List Exercise
+//    val num = ArrayList<Double>()
+//    var sum = 0.0
+//
+//    num.add(21.7)
+//    num.add(81.2)
+//    num.add(99.0)
+//    num.add(13.4)
+//    num.add(72.21)
+//
+//    for(i in num){
+//        sum += i
+//    }
+//    var result = (sum / num.size)
+//
+//    println("The average of the ArrayList is $result")
+
+//endregion
+
+// region Lambda
+//    addNumber(21, 72)
+
+    // LAMBDA, to short the first expression
+//    val sum: (Int, Int) -> Int = {a: Int, b:Int -> a + b}
+//    println(sum(7, 77))
+
+    // LAMBDA even shorter
+//    val shorterSum = {a: Int, b: Int -> println(a + b)}
+//    shorterSum(81, 72)
+
+
+// endregion
+
 // region Array
 //    val numbers = intArrayOf(21, 72, 81)
 //    val numbers = arrayOf(27, 79, 92)
@@ -111,7 +144,7 @@ fun  main() {
 
 // region Set and Maps
     val fruits = setOf("Dragon Fruit", "Boysenberry", "Grape", "Dragon Fruit")
-    println(fruits.toSortedSet())
+//    println(fruits.toSortedSet())
 
     val newFruits = fruits.toMutableList()
     newFruits.add("Mango")
@@ -211,6 +244,13 @@ fun  main() {
 // endregion
 }
 data class fruit(val name: String, val price: Double)
+
+// region Fun Lambda
+//    fun addNumber(a: Int, b: Int){
+//        val add = a + b
+//        println(add)
+//    }
+// endregion
 
 // region Class Car
 //class Car(){
