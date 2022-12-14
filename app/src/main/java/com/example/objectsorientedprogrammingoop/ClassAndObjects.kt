@@ -121,7 +121,7 @@ fun  main() {
     val daysOfTheWeek = mapOf(1 to "Monday", 2 to "Tuesday", 3 to "Wednesday")
 
     for(key in daysOfTheWeek.keys){
-        println("$key is to ${daysOfTheWeek[key]}")
+//        println("$key is to ${daysOfTheWeek[key]}")
     }
 
     val Fruits = mapOf("Not so good" to fruit("Grape", 2.6), "I don't like" to fruit("Water Mellow", 3.9), "Favorite" to fruit("Tangerine", 2.1))
@@ -132,9 +132,7 @@ fun  main() {
     newDaysOfWeek[6] = "Saturday"
     newDaysOfWeek[7] = "Sunday"
 
-    println(newDaysOfWeek.toSortedMap())
-
-    println(Fruits.values)
+//    println(newDaysOfWeek.toSortedMap())
 // endregion
 
 //     region Function USER
