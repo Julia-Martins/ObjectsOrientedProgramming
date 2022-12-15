@@ -5,6 +5,22 @@ import kotlin.math.floor
 data class User(val id: Long, var name: String)
 
 fun  main() {
+// region Nested Class
+//    println(OuterClass.NestedClass().description)
+//
+//    var obj = OuterClass.NestedClass()
+//
+//    obj.foo()
+// endregion
+
+// region Inner Class
+//    println(OuterClass().InnerClass().description)
+//
+//    var obj = OuterClass().InnerClass()
+//
+//    obj.foo()
+// endregion
+
 // region Array List Exercise
 //    val num = ArrayList<Double>()
 //    var sum = 0.0
@@ -245,6 +261,36 @@ fun  main() {
 }
 data class fruit(val name: String, val price: Double)
 
+// region Nested Class
+//    class OuterClass{
+//        private var name: String = "Mister X"
+//        class NestedClass{
+//            var description: String = "The baddest boss ever in R2"
+//            private var id: Int = 2172
+//
+//            fun foo(){
+////                println("Name is ${name}") // Can't access the outer class member, because it's private
+//                println("Id is $id")
+//            }
+//        }
+//    }
+// endregion
+
+// region Inner Class
+    class OuterClass{
+        private var name: String = "Mister X"
+        inner class InnerClass{
+            var description: String = "The baddest boss ever in R2"
+            private var id: Int = 2172
+
+            fun foo(){
+                println("Name is $name") // You can access the outer class member
+                println("Id is $id")
+            }
+        }
+    }
+// endregion
+
 // region Fun Lambda
 //    fun addNumber(a: Int, b: Int){
 //        val add = a + b
@@ -297,7 +343,7 @@ data class fruit(val name: String, val price: Double)
 //    }
 //endregion
 
-// region EXERCISE
+// region EXERCISE Class
 /* class MobilePhone(Name: String, Brand: String, Model: String){
     private var battery = 30
 
